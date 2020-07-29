@@ -37,7 +37,7 @@ Options:
 
 Download generated calendar files:
 ---------------------------------
-Generated ics files are available for download in the [releases](releases) page on github.
+Generated ics files are available for download in the [releases](https://github.com/caarmen/french-revolutionary-calendar-generator/releases) page on github.
 
 Warning:
 --------
