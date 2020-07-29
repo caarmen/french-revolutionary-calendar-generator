@@ -1,0 +1,8 @@
+BEGIN:VCALENDAR
+PRODID:FRC
+VERSION:2.0
+CALSCALE:GREGORIAN
+NAME:Calendrier révolutionnaire français
+X-WR-CALNAME:Calendrier révolutionnaire français
+__EVENTS__
+END:VCALENDAR
