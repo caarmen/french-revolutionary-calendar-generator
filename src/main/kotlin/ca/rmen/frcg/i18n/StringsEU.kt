@@ -20,4 +20,5 @@ package ca.rmen.frcg.i18n
 
 class StringsEU : Strings {
     override val calendarName: String = "Egutegi errepublikanoa"
+    override val objectOfTheDayLabelFormat: String = "%s gaur"
 }

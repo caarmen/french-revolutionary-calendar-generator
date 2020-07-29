@@ -20,4 +20,5 @@ package ca.rmen.frcg.i18n
 
 class StringsDE : Strings {
     override val calendarName: String = "Französischer Revolutionskalender"
+    override val objectOfTheDayLabelFormat: String = "%s des Tagges"
 }

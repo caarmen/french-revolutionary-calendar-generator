@@ -20,24 +20,23 @@ package ca.rmen.frcg
 
 import ca.rmen.frcg.i18n.getStrings
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.GregorianCalendar
-import java.util.UUID
+import java.util.*
 
-class CalendarGenerator(private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalendar) {
+class CalendarGenerator(
+    private val language: String,
+    private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalendar) {
+
     private val sdf = SimpleDateFormat("yyyyMMdd")
+    private val strings = getStrings(language)
 
     fun createCalendar(
-        language: String,
         calendarTemplateText: String,
         eventTemplateText: String,
         year: Int
     ): String {
         val events = createEvents(eventTemplateText, year)
         return createCalendar(
-            language = language,
-            templateText= calendarTemplateText,
+            templateText = calendarTemplateText,
             eventTexts = events
         )
     }
@@ -64,11 +63,10 @@ class CalendarGenerator(private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalenda
     }
 
     private fun createCalendar(
-        language: String,
         templateText: String,
         eventTexts: List<String>
     ) = templateText
-        .replace("__CALENDAR_NAME__", getStrings(language).calendarName)
+        .replace("__CALENDAR_NAME__", strings.calendarName)
         .replace("__EVENTS__", eventTexts.joinToString("\n"))
 
     private fun createEvent(
@@ -86,9 +84,12 @@ class CalendarGenerator(private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalenda
             .replace("__UUID__", UUID.randomUUID().toString())
             .replace("__GREGORIAN_DATE_GENERATION__", sdf.format(Date()))
             .replace("__FRC_DATE_DAY__", frcDate.dayOfMonth.toString())
+            .replace("__FRC_DATE_DAY_OF_WEEK__", frcDate.weekdayName)
             .replace("__FRC_DATE_MONTH__", frcDate.monthName)
             .replace("__FRC_DATE_YEAR__", frcDate.year.toString())
             .replace("__FRC_DATE_OBJECT__", frcDate.objectOfTheDay)
+            .replace("__FRC_DATE_OBJECT_LABEL__",
+                String.format(Locale.US, strings.objectOfTheDayLabelFormat, frcDate.objectTypeName))
             .replace("__GREGORIAN_DATE_START__", sdf.format(gregorianDate.time))
             .replace("__GREGORIAN_DATE_END__", sdf.format(Calendar.getInstance().apply {
                 timeInMillis = gregorianDate.timeInMillis

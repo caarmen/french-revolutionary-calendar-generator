@@ -29,8 +29,7 @@ fun main(args: Array<String>) {
         Locale(parsedArguments.language),
         ca.rmen.lfrc.FrenchRevolutionaryCalendar.CalculationMethod.ROMME
     )
-    val calendar = CalendarGenerator(frc).createCalendar(
-        language = parsedArguments.language,
+    val calendar = CalendarGenerator(parsedArguments.language, frc).createCalendar(
         calendarTemplateText = calendarTemplate,
         eventTemplateText = eventTemplate,
         year = parsedArguments.year

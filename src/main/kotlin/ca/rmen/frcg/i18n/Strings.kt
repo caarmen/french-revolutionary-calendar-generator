@@ -20,6 +20,7 @@ package ca.rmen.frcg.i18n
 
 interface Strings {
     val calendarName: String
+    val objectOfTheDayLabelFormat: String
 }
 fun getStrings(language: String) =
     when(language) {
