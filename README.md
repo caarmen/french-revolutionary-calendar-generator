@@ -13,11 +13,11 @@ This project generates an ICS calendar file containing events for one full Grego
     ```
 
 
-Building:
+Building
 ---------
 Build the project with `./gradlew build`
 
-Usage:
+Usage
 ------
 Run the project with the `--help` option to see the available parameters. All parameters are optional.
 
@@ -35,10 +35,10 @@ Options:
     --help, -h -> Usage info 
 ```
 
-Download generated calendar files:
+Download generated calendar files
 ---------------------------------
 Generated ics files are available for download in the [releases](https://github.com/caarmen/french-revolutionary-calendar-generator/releases) page on github.
 
-Warning:
---------
+⚠️ Warning ⚠️
+-------------
 The generated calendar file contains hundreds of events (365 or 366 depending on the year). Take care when importing the calendar file into your calendar software. It is recommended to **import it into a new calendar, and not an existing one**. This way, if you're not satisfied with the result, or decide you don't want to use it after a while, it will be much easier to delete the entire new calendar than to delete hundreds of events one by one from your existing calendar.
