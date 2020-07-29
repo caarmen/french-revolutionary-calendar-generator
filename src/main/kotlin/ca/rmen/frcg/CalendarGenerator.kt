@@ -18,6 +18,7 @@
 
 package ca.rmen.frcg
 
+import ca.rmen.frcg.i18n.getStrings
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -28,12 +29,17 @@ class CalendarGenerator(private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalenda
     private val sdf = SimpleDateFormat("yyyyMMdd")
 
     fun createCalendar(
+        language: String,
         calendarTemplateText: String,
         eventTemplateText: String,
         year: Int
     ): String {
         val events = createEvents(eventTemplateText, year)
-        return createCalendar(calendarTemplateText, events)
+        return createCalendar(
+            language = language,
+            templateText= calendarTemplateText,
+            eventTexts = events
+        )
     }
 
     private fun createEvents(
@@ -58,9 +64,12 @@ class CalendarGenerator(private val frc: ca.rmen.lfrc.FrenchRevolutionaryCalenda
     }
 
     private fun createCalendar(
+        language: String,
         templateText: String,
         eventTexts: List<String>
-    ) = templateText.replace("__EVENTS__", eventTexts.joinToString("\n"))
+    ) = templateText
+        .replace("__CALENDAR_NAME__", getStrings(language).calendarName)
+        .replace("__EVENTS__", eventTexts.joinToString("\n"))
 
     private fun createEvent(
         templateText: String,

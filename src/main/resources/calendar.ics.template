@@ -2,7 +2,7 @@ BEGIN:VCALENDAR
 PRODID:FRC
 VERSION:2.0
 CALSCALE:GREGORIAN
-NAME:Calendrier révolutionnaire français
-X-WR-CALNAME:Calendrier révolutionnaire français
+NAME:__CALENDAR_NAME__
+X-WR-CALNAME:__CALENDAR_NAME__
 __EVENTS__
 END:VCALENDAR

@@ -16,25 +16,8 @@
  * along with French Revolutionary Calendar Generator.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ca.rmen.frcg
+package ca.rmen.frcg.i18n
 
-import java.io.File
-import java.util.Locale
-
-fun main(args: Array<String>) {
-    val parsedArguments = ArgumentParser.parseArguments(args)
-    val calendarTemplate = File(parsedArguments.calendarTemplatePath).readText()
-    val eventTemplate = File(parsedArguments.eventTemplatePath).readText()
-    val frc = ca.rmen.lfrc.FrenchRevolutionaryCalendar(
-        Locale(parsedArguments.language),
-        ca.rmen.lfrc.FrenchRevolutionaryCalendar.CalculationMethod.ROMME
-    )
-    val calendar = CalendarGenerator(frc).createCalendar(
-        language = parsedArguments.language,
-        calendarTemplateText = calendarTemplate,
-        eventTemplateText = eventTemplate,
-        year = parsedArguments.year
-    )
-    println(calendar)
+class StringsIT : Strings {
+    override val calendarName: String = "Calendario rivoluzionario francese"
 }
-
