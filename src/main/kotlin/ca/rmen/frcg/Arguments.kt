@@ -22,5 +22,6 @@ data class Arguments(
     val year: Int,
     val calendarTemplatePath: String,
     val eventTemplatePath: String,
-    val language: String
+    val language: String,
+    val calculationMethod: String
 )

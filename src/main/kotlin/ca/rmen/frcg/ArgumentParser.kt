@@ -22,6 +22,7 @@ import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.default
 import java.util.Calendar
+import java.util.Locale
 
 object ArgumentParser  {
     fun parseArguments(args: Array<String>): Arguments {
@@ -31,7 +32,7 @@ object ArgumentParser  {
             type = ArgType.Int,
             fullName = "year",
             shortName = "y",
-            description = "Year for which to generate the calendar"
+            description = "Gregorian year for which to generate the calendar"
         ).default(thisYear)
         val eventTemplatePath by parser.option(
             type = ArgType.String,
@@ -50,12 +51,21 @@ object ArgumentParser  {
             fullName = "language",
             shortName = "l"
         ).default("fr")
+        val calculationMethod by parser.option(
+            type = ArgType.Choice(
+                ca.rmen.lfrc.FrenchRevolutionaryCalendar.CalculationMethod.values().map {
+                    it.name.toLowerCase(Locale.US)
+                }),
+            fullName = "method",
+            shortName = "m"
+        ).default("romme")
         parser.parse(args)
         return Arguments(
             year = year,
             calendarTemplatePath = calendarTemplatePath,
             eventTemplatePath = eventTemplatePath,
-            language = language
+            language = language,
+            calculationMethod = calculationMethod
         )
     }
 
